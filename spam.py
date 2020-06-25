@@ -1,18 +1,32 @@
 from colorama import *
-import os                                                  import smtplib                                             from email.mime.text import MIMEText                       from email.mime.multipart import MIMEMultipart             smale = '''
+import os                                                  
+import smtplib                                           
+from email.mime.text import MIMEText                       
+from email.mime.multipart import MIMEMultipart             
+smale = '''
  ▄▄█████▄  ██▄███▄    ▄█████▄  ████▄██▄
  ██▄▄▄▄ ▀  ██▀  ▀██   ▀ ▄▄▄██  ██ ██ ██
   ▀▀▀▀██▄  ██    ██  ▄██▀▀▀██  ██ ██ ██
- █▄▄▄▄▄██  ███▄▄██▀  ██▄▄▄███  ██ ██ ██                      ▀▀▀▀▀▀   ██ ▀▀▀     ▀▀▀▀ ▀▀  ▀▀ ▀▀ ▀▀                               █                                               '''                                                        li = "==========================================="         def spam():
+ █▄▄▄▄▄██  ███▄▄██▀  ██▄▄▄███  ██ ██ ██                      
+  ▀▀▀▀▀▀   ██ ▀▀▀     ▀▀▀▀ ▀▀  ▀▀ ▀▀ ▀▀                              
+            █                                               
+
+'''                                                        
+li = "==========================================="         
+def spam():
         login = input(Fore.RED + "почты с которой будет идти спам:")
-        password = input("пароль к этой почте:")                   url = "smtp.mail.ru"
+        password = input("пароль к этой почте:")                   
+        url = "smtp.mail.ru"
         target = input("жертва:")
         message = "вы были за спамлены ботом в вк"
         msg = MIMEMultipart()
-        msg["From"] = login                                        body = message                                             msg.attach(MIMEText(body,"plain"))
+        msg["From"] = login                                        
+        body = message                                             
+        msg.attach(MIMEText(body,"plain"))
         server = smtplib.SMTP_SSL(url,465)
         server.login(login,password)
-        print("что бы остановить атаку нажмите CTRL+Z")            while True:
+        print("что бы остановить атаку нажмите CTRL+Z")            
+        while True:
                 server.sendmail(login,target,msg.as_string())
 def bunner():
         os.system("clear")
